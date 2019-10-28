@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnockoutMVCSample", "Knocko
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventorySalesSampleApi", "InventorySalesSampleApi\InventorySalesSampleApi.csproj", "{E1FA3D57-13DD-41E7-BC90-EB23F9BF0548}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnockoutMVCBootstrap", "KnockoutMVCBootstrap\KnockoutMVCBootstrap.csproj", "{06F1ED81-03CA-4874-935F-808191FF1268}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{E1FA3D57-13DD-41E7-BC90-EB23F9BF0548}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1FA3D57-13DD-41E7-BC90-EB23F9BF0548}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1FA3D57-13DD-41E7-BC90-EB23F9BF0548}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06F1ED81-03CA-4874-935F-808191FF1268}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06F1ED81-03CA-4874-935F-808191FF1268}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06F1ED81-03CA-4874-935F-808191FF1268}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06F1ED81-03CA-4874-935F-808191FF1268}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
