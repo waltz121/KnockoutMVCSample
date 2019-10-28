@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7c740a95fb0b448498bbf359bf281fa7" Name="Diagram1">
+        <EntityTypeShape EntityType="InventorySalesDBModel.Daily_Inventory_Levels" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InventorySalesDBModel.Product_Types" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InventorySalesDBModel.Product" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="InventorySalesDBModel.Products_in_Sales" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InventorySalesDBModel.Ref_Calendar" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InventorySalesDBModel.Sale" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <AssociationConnector Association="InventorySalesDBModel.FK_Daily_Inventory_Levels_ToProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="InventorySalesDBModel.FK_Daily_Inventory_Levels_ToRef_Calendar" ManuallyRouted="false" />
+        <AssociationConnector Association="InventorySalesDBModel.FK_Product_ToProduct_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="InventorySalesDBModel.FK_Product_Types_ToProduct_Types" ManuallyRouted="false" />
+        <AssociationConnector Association="InventorySalesDBModel.FK_Products_in_Sales_ToProducts" ManuallyRouted="false" />
+        <AssociationConnector Association="InventorySalesDBModel.FK_Products_in_Sales_ToSales" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

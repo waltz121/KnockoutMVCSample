@@ -1,0 +1,427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="InventorySalesDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Daily_Inventory_Levels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Levels" Type="int" Nullable="false" />
+          <Property Name="Product_ID" Type="int" Nullable="false" />
+          <Property Name="Day_Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product_Types">
+          <Key>
+            <PropertyRef Name="Product_Type_Code" />
+          </Key>
+          <Property Name="Product_Type_Code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Parent_Product_Type_Code" Type="int" />
+          <Property Name="Product_Type_Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_Type_Code" Type="int" Nullable="false" />
+          <Property Name="Product_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Unit_Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Product_Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="Reorder_Level" Type="int" />
+          <Property Name="Reorder_Quantity" Type="int" />
+          <Property Name="Other_Details" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Products_in_Sales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sales_Id" Type="int" Nullable="false" />
+          <Property Name="Product_Id" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ref_Calendar">
+          <Key>
+            <PropertyRef Name="Day_Date" />
+          </Key>
+          <Property Name="Day_Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date_of_Sale" Type="datetime" />
+          <Property Name="Total_Amount_of_Sale" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <Association Name="FK_Daily_Inventory_Levels_ToProduct">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="Daily_Inventory_Levels" Type="Self.Daily_Inventory_Levels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Daily_Inventory_Levels">
+              <PropertyRef Name="Product_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Daily_Inventory_Levels_ToRef_Calendar">
+          <End Role="Ref_Calendar" Type="Self.Ref_Calendar" Multiplicity="1" />
+          <End Role="Daily_Inventory_Levels" Type="Self.Daily_Inventory_Levels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ref_Calendar">
+              <PropertyRef Name="Day_Date" />
+            </Principal>
+            <Dependent Role="Daily_Inventory_Levels">
+              <PropertyRef Name="Day_Date" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_ToProduct_Type">
+          <End Role="Product_Types" Type="Self.Product_Types" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Types">
+              <PropertyRef Name="Product_Type_Code" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="Product_Type_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Types_ToProduct_Types">
+          <End Role="Product_Types" Type="Self.Product_Types" Multiplicity="0..1" />
+          <End Role="Product_Types1" Type="Self.Product_Types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Types">
+              <PropertyRef Name="Product_Type_Code" />
+            </Principal>
+            <Dependent Role="Product_Types1">
+              <PropertyRef Name="Parent_Product_Type_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_in_Sales_ToProducts">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="Products_in_Sales" Type="Self.Products_in_Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products_in_Sales">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_in_Sales_ToSales">
+          <End Role="Sales" Type="Self.Sales" Multiplicity="1" />
+          <End Role="Products_in_Sales" Type="Self.Products_in_Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sales">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products_in_Sales">
+              <PropertyRef Name="Sales_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="InventorySalesDBModelStoreContainer">
+          <EntitySet Name="Daily_Inventory_Levels" EntityType="Self.Daily_Inventory_Levels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Types" EntityType="Self.Product_Types" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products_in_Sales" EntityType="Self.Products_in_Sales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ref_Calendar" EntityType="Self.Ref_Calendar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Daily_Inventory_Levels_ToProduct" Association="Self.FK_Daily_Inventory_Levels_ToProduct">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Daily_Inventory_Levels" EntitySet="Daily_Inventory_Levels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Daily_Inventory_Levels_ToRef_Calendar" Association="Self.FK_Daily_Inventory_Levels_ToRef_Calendar">
+            <End Role="Ref_Calendar" EntitySet="Ref_Calendar" />
+            <End Role="Daily_Inventory_Levels" EntitySet="Daily_Inventory_Levels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_ToProduct_Type" Association="Self.FK_Product_ToProduct_Type">
+            <End Role="Product_Types" EntitySet="Product_Types" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Types_ToProduct_Types" Association="Self.FK_Product_Types_ToProduct_Types">
+            <End Role="Product_Types" EntitySet="Product_Types" />
+            <End Role="Product_Types1" EntitySet="Product_Types" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_in_Sales_ToProducts" Association="Self.FK_Products_in_Sales_ToProducts">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Products_in_Sales" EntitySet="Products_in_Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_in_Sales_ToSales" Association="Self.FK_Products_in_Sales_ToSales">
+            <End Role="Sales" EntitySet="Sales" />
+            <End Role="Products_in_Sales" EntitySet="Products_in_Sales" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InventorySalesDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Daily_Inventory_Levels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Levels" Type="Int32" Nullable="false" />
+          <Property Name="Product_ID" Type="Int32" Nullable="false" />
+          <Property Name="Day_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Daily_Inventory_Levels_ToProduct" FromRole="Daily_Inventory_Levels" ToRole="Products" />
+          <NavigationProperty Name="Ref_Calendar" Relationship="Self.FK_Daily_Inventory_Levels_ToRef_Calendar" FromRole="Daily_Inventory_Levels" ToRole="Ref_Calendar" />
+        </EntityType>
+        <EntityType Name="Product_Types">
+          <Key>
+            <PropertyRef Name="Product_Type_Code" />
+          </Key>
+          <Property Name="Product_Type_Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Parent_Product_Type_Code" Type="Int32" />
+          <Property Name="Product_Type_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Product_ToProduct_Type" FromRole="Product_Types" ToRole="Products" />
+          <NavigationProperty Name="Product_Types1" Relationship="Self.FK_Product_Types_ToProduct_Types" FromRole="Product_Types" ToRole="Product_Types1" />
+          <NavigationProperty Name="Product_Types2" Relationship="Self.FK_Product_Types_ToProduct_Types" FromRole="Product_Types1" ToRole="Product_Types" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_Type_Code" Type="Int32" Nullable="false" />
+          <Property Name="Product_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Unit_Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Product_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Reorder_Level" Type="Int32" />
+          <Property Name="Reorder_Quantity" Type="Int32" />
+          <Property Name="Other_Details" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Daily_Inventory_Levels" Relationship="Self.FK_Daily_Inventory_Levels_ToProduct" FromRole="Products" ToRole="Daily_Inventory_Levels" />
+          <NavigationProperty Name="Product_Types" Relationship="Self.FK_Product_ToProduct_Type" FromRole="Products" ToRole="Product_Types" />
+          <NavigationProperty Name="Products_in_Sales" Relationship="Self.FK_Products_in_Sales_ToProducts" FromRole="Products" ToRole="Products_in_Sales" />
+        </EntityType>
+        <EntityType Name="Products_in_Sales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sales_Id" Type="Int32" Nullable="false" />
+          <Property Name="Product_Id" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Products_in_Sales_ToProducts" FromRole="Products_in_Sales" ToRole="Products" />
+          <NavigationProperty Name="Sale" Relationship="Self.FK_Products_in_Sales_ToSales" FromRole="Products_in_Sales" ToRole="Sales" />
+        </EntityType>
+        <EntityType Name="Ref_Calendar">
+          <Key>
+            <PropertyRef Name="Day_Date" />
+          </Key>
+          <Property Name="Day_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Daily_Inventory_Levels" Relationship="Self.FK_Daily_Inventory_Levels_ToRef_Calendar" FromRole="Ref_Calendar" ToRole="Daily_Inventory_Levels" />
+        </EntityType>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date_of_Sale" Type="DateTime" Precision="3" />
+          <Property Name="Total_Amount_of_Sale" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Products_in_Sales" Relationship="Self.FK_Products_in_Sales_ToSales" FromRole="Sales" ToRole="Products_in_Sales" />
+        </EntityType>
+        <Association Name="FK_Daily_Inventory_Levels_ToProduct">
+          <End Role="Products" Type="Self.Product" Multiplicity="1" />
+          <End Role="Daily_Inventory_Levels" Type="Self.Daily_Inventory_Levels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Daily_Inventory_Levels">
+              <PropertyRef Name="Product_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Daily_Inventory_Levels_ToRef_Calendar">
+          <End Role="Ref_Calendar" Type="Self.Ref_Calendar" Multiplicity="1" />
+          <End Role="Daily_Inventory_Levels" Type="Self.Daily_Inventory_Levels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ref_Calendar">
+              <PropertyRef Name="Day_Date" />
+            </Principal>
+            <Dependent Role="Daily_Inventory_Levels">
+              <PropertyRef Name="Day_Date" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_ToProduct_Type">
+          <End Role="Product_Types" Type="Self.Product_Types" Multiplicity="1" />
+          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Types">
+              <PropertyRef Name="Product_Type_Code" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="Product_Type_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Types_ToProduct_Types">
+          <End Role="Product_Types" Type="Self.Product_Types" Multiplicity="0..1" />
+          <End Role="Product_Types1" Type="Self.Product_Types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Types">
+              <PropertyRef Name="Product_Type_Code" />
+            </Principal>
+            <Dependent Role="Product_Types1">
+              <PropertyRef Name="Parent_Product_Type_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_in_Sales_ToProducts">
+          <End Role="Products" Type="Self.Product" Multiplicity="1" />
+          <End Role="Products_in_Sales" Type="Self.Products_in_Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products_in_Sales">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_in_Sales_ToSales">
+          <End Role="Sales" Type="Self.Sale" Multiplicity="1" />
+          <End Role="Products_in_Sales" Type="Self.Products_in_Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sales">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products_in_Sales">
+              <PropertyRef Name="Sales_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="InventorySalesDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Daily_Inventory_Levels" EntityType="Self.Daily_Inventory_Levels" />
+          <EntitySet Name="Product_Types" EntityType="Self.Product_Types" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="Products_in_Sales" EntityType="Self.Products_in_Sales" />
+          <EntitySet Name="Ref_Calendar" EntityType="Self.Ref_Calendar" />
+          <EntitySet Name="Sales" EntityType="Self.Sale" />
+          <AssociationSet Name="FK_Daily_Inventory_Levels_ToProduct" Association="Self.FK_Daily_Inventory_Levels_ToProduct">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Daily_Inventory_Levels" EntitySet="Daily_Inventory_Levels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Daily_Inventory_Levels_ToRef_Calendar" Association="Self.FK_Daily_Inventory_Levels_ToRef_Calendar">
+            <End Role="Ref_Calendar" EntitySet="Ref_Calendar" />
+            <End Role="Daily_Inventory_Levels" EntitySet="Daily_Inventory_Levels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_ToProduct_Type" Association="Self.FK_Product_ToProduct_Type">
+            <End Role="Product_Types" EntitySet="Product_Types" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Types_ToProduct_Types" Association="Self.FK_Product_Types_ToProduct_Types">
+            <End Role="Product_Types" EntitySet="Product_Types" />
+            <End Role="Product_Types1" EntitySet="Product_Types" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_in_Sales_ToProducts" Association="Self.FK_Products_in_Sales_ToProducts">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Products_in_Sales" EntitySet="Products_in_Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_in_Sales_ToSales" Association="Self.FK_Products_in_Sales_ToSales">
+            <End Role="Sales" EntitySet="Sales" />
+            <End Role="Products_in_Sales" EntitySet="Products_in_Sales" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InventorySalesDBModelStoreContainer" CdmEntityContainer="InventorySalesDBEntities">
+          <EntitySetMapping Name="Daily_Inventory_Levels">
+            <EntityTypeMapping TypeName="InventorySalesDBModel.Daily_Inventory_Levels">
+              <MappingFragment StoreEntitySet="Daily_Inventory_Levels">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Levels" ColumnName="Levels" />
+                <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+                <ScalarProperty Name="Day_Date" ColumnName="Day_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Types">
+            <EntityTypeMapping TypeName="InventorySalesDBModel.Product_Types">
+              <MappingFragment StoreEntitySet="Product_Types">
+                <ScalarProperty Name="Product_Type_Code" ColumnName="Product_Type_Code" />
+                <ScalarProperty Name="Parent_Product_Type_Code" ColumnName="Parent_Product_Type_Code" />
+                <ScalarProperty Name="Product_Type_Description" ColumnName="Product_Type_Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="InventorySalesDBModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Product_Type_Code" ColumnName="Product_Type_Code" />
+                <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+                <ScalarProperty Name="Unit_Price" ColumnName="Unit_Price" />
+                <ScalarProperty Name="Product_Description" ColumnName="Product_Description" />
+                <ScalarProperty Name="Reorder_Level" ColumnName="Reorder_Level" />
+                <ScalarProperty Name="Reorder_Quantity" ColumnName="Reorder_Quantity" />
+                <ScalarProperty Name="Other_Details" ColumnName="Other_Details" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products_in_Sales">
+            <EntityTypeMapping TypeName="InventorySalesDBModel.Products_in_Sales">
+              <MappingFragment StoreEntitySet="Products_in_Sales">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Sales_Id" ColumnName="Sales_Id" />
+                <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ref_Calendar">
+            <EntityTypeMapping TypeName="InventorySalesDBModel.Ref_Calendar">
+              <MappingFragment StoreEntitySet="Ref_Calendar">
+                <ScalarProperty Name="Day_Date" ColumnName="Day_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sales">
+            <EntityTypeMapping TypeName="InventorySalesDBModel.Sale">
+              <MappingFragment StoreEntitySet="Sales">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date_of_Sale" ColumnName="Date_of_Sale" />
+                <ScalarProperty Name="Total_Amount_of_Sale" ColumnName="Total_Amount_of_Sale" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
