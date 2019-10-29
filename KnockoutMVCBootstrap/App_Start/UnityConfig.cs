@@ -1,3 +1,6 @@
+using InventorySalesSampleApi.CodeRepository;
+using InventorySalesSampleApi.Models;
+using InventorySalesSampleApi.UnitOfWork;
 using System.Web.Mvc;
 using Unity;
 using Unity.Mvc5;
@@ -16,6 +19,9 @@ namespace KnockoutMVCBootstrap
             // e.g. container.RegisterType<ITestService, TestService>();
 
             //DependencyResolver.SetResolver(new UnityDependencyResolver(container));
+
+            container.RegisterType<IRepository<Product>, ProductRepository>();
+            container.RegisterType<IUnitOfWork, InventorySalesUnitOfWork>();
 
             return container;
         }

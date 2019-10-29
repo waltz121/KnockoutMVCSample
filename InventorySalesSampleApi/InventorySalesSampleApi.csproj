@@ -142,6 +142,8 @@
       <DependentUpon>InventorySalesContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitOfWork\InventorySalesUnitOfWork.cs" />
+    <Compile Include="UnitOfWork\IUnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Models\InventorySalesContext.edmx">
