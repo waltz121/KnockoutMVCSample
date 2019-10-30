@@ -1,9 +1,4 @@
-using InventorySalesSampleApi.CodeRepository;
-using InventorySalesSampleApi.Models;
-using InventorySalesSampleApi.UnitOfWork;
-using System.Web.Mvc;
 using Unity;
-using Unity.Mvc5;
 
 namespace KnockoutMVCBootstrap
 {
@@ -11,7 +6,7 @@ namespace KnockoutMVCBootstrap
     {
         public static UnityContainer RegisterComponents()
         {
-			var container = new UnityContainer();
+            var container = new UnityContainer();
 
             // register all your components with the container here
             // it is NOT necessary to register your controllers
@@ -20,8 +15,7 @@ namespace KnockoutMVCBootstrap
 
             //DependencyResolver.SetResolver(new UnityDependencyResolver(container));
 
-            container.RegisterType<IRepository<Product>, ProductRepository>();
-            container.RegisterType<IUnitOfWork, InventorySalesUnitOfWork>();
+
 
             return container;
         }

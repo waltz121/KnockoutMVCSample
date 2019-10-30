@@ -1,18 +1,20 @@
 ﻿using InventorySalesSampleApi.CodeRepository;
 using InventorySalesSampleApi.Models;
 using System;
+using Unity;
 
 namespace InventorySalesSampleApi.UnitOfWork
 {
     public class InventorySalesUnitOfWork : IUnitOfWork
     {
-        InventorySalesDBEntities DBEntities;
-        public InventorySalesUnitOfWork(InventorySalesDBEntities DBEntities)
-        {
-            this.DBEntities = DBEntities;
 
-            ProductRepository = new ProductRepository(DBEntities);
+        InventorySalesDBEntities dBEntities;
+        public InventorySalesUnitOfWork(IRepository<Product> productRepository, InventorySalesDBEntities dBEntities)
+        {
+            this.dBEntities = dBEntities;
+            ProductRepository = productRepository;
         }
+
         public IRepository<Product> ProductRepository 
         {
             get;
@@ -22,7 +24,7 @@ namespace InventorySalesSampleApi.UnitOfWork
         {
             try
             {
-                DBEntities.SaveChanges();
+                dBEntities.SaveChanges();
                 return "Success";
             }
             catch(Exception ex)
@@ -30,7 +32,6 @@ namespace InventorySalesSampleApi.UnitOfWork
                 ArgumentException argumentException = new ArgumentException("Error: " + ex.Message);
                 throw argumentException;
             }
-           
         }
     }
 }
