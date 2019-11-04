@@ -3,11 +3,12 @@
     public class ProductDomain
     {
         public int Id { get; set; }
-        public int ProductTypeCode { get; set; }
-        public decimal UnitPrice { get; set; }
-        public string ProductDescription { get; set; }
-        public int ReorderLevel { get; set; }
-        public int ReorderQuantity { get; set; }
-        public string OtherDetails { get; set; }
+        public int Product_Type_Code { get; set; }
+        public decimal Unit_Price { get; set; }
+        public string Product_Name { get; set; }
+        public string Product_Description { get; set; }
+        public int Reorder_Level { get; set; }
+        public int Reorder_Quantity { get; set; }
+        public string Other_Details { get; set; }
     }
 }
