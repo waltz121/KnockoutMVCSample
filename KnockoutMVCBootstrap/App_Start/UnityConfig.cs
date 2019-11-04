@@ -1,3 +1,5 @@
+using KnockoutMVCCommons.HttpRequest.RequestGet;
+using KnockoutMVCCommons.HttpRequest.RequestPost;
 using Unity;
 
 namespace KnockoutMVCBootstrap
@@ -15,7 +17,8 @@ namespace KnockoutMVCBootstrap
 
             //DependencyResolver.SetResolver(new UnityDependencyResolver(container));
 
-
+            container.RegisterType<IHttpRequestGet, HttpRequestGet>();
+            container.RegisterType<IHttpRequestPost, HttpRequestPost>();
 
             return container;
         }

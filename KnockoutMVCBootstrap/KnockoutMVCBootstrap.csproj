@@ -98,6 +98,10 @@
       <Project>{E1FA3D57-13DD-41E7-BC90-EB23F9BF0548}</Project>
       <Name>InventorySalesSampleApi</Name>
     </ProjectReference>
+    <ProjectReference Include="..\KnockoutMVCCommons\KnockoutMVCCommons.csproj">
+      <Project>{DA8116F5-74A5-44E1-9AD5-31A0664A5D41}</Project>
+      <Name>KnockoutMVCCommons</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

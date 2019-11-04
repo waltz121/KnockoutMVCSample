@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29411.108
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnockoutMVCSample", "KnockoutMVCSample\KnockoutMVCSample.csproj", "{AC0BCCDD-1C21-43DF-BA07-99543C682856}"
 EndProject
@@ -10,6 +10,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnockoutMVCBootstrap", "KnockoutMVCBootstrap\KnockoutMVCBootstrap.csproj", "{06F1ED81-03CA-4874-935F-808191FF1268}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventorySalesDomain", "InventorySalesDomain\InventorySalesDomain.csproj", "{DAACC078-8D10-4563-AF25-62710E14D4CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnockoutMVCApplication", "KnockoutMVCApplication\KnockoutMVCApplication.csproj", "{6D7524A7-7E8E-4A00-A6DC-80183FB5198C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnockoutMVCCommons", "KnockoutMVCCommons\KnockoutMVCCommons.csproj", "{DA8116F5-74A5-44E1-9AD5-31A0664A5D41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{DAACC078-8D10-4563-AF25-62710E14D4CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAACC078-8D10-4563-AF25-62710E14D4CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DAACC078-8D10-4563-AF25-62710E14D4CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D7524A7-7E8E-4A00-A6DC-80183FB5198C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D7524A7-7E8E-4A00-A6DC-80183FB5198C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D7524A7-7E8E-4A00-A6DC-80183FB5198C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D7524A7-7E8E-4A00-A6DC-80183FB5198C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA8116F5-74A5-44E1-9AD5-31A0664A5D41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA8116F5-74A5-44E1-9AD5-31A0664A5D41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA8116F5-74A5-44E1-9AD5-31A0664A5D41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA8116F5-74A5-44E1-9AD5-31A0664A5D41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

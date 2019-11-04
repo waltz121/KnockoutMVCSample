@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DAACC078-8D10-4563-AF25-62710E14D4CC}</ProjectGuid>
+    <ProjectGuid>{6D7524A7-7E8E-4A00-A6DC-80183FB5198C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>InventorySalesDomain</RootNamespace>
-    <AssemblyName>InventorySalesDomain</AssemblyName>
+    <RootNamespace>KnockoutMVCApplication</RootNamespace>
+    <AssemblyName>KnockoutMVCApplication</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,10 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Factory\IProductDomainFactory.cs" />
-    <Compile Include="Factory\ProductDomainFactory.cs" />
-    <Compile Include="ProductDomain.cs" />
+    <Compile Include="Product\GetListProductsQuery\GetListProductsQuery.cs" />
+    <Compile Include="Product\GetListProductsQuery\IGetListProductsQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InventorySalesDomain\InventorySalesDomain.csproj">
+      <Project>{DAACC078-8D10-4563-AF25-62710E14D4CC}</Project>
+      <Name>InventorySalesDomain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

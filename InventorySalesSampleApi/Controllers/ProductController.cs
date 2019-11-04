@@ -1,4 +1,5 @@
 ﻿using InventorySalesDomain;
+using InventorySalesDomain.Factory;
 using InventorySalesSampleApi.Mappings;
 using InventorySalesSampleApi.Models;
 using InventorySalesSampleApi.UnitOfWork;
@@ -13,10 +14,12 @@ namespace InventorySalesSampleApi.Controllers
     public class ProductController : ApiController
     {
         private readonly IUnitOfWork InventorySalesUnitOfWork;
+        private readonly IProductDomainFactory productDomainFactory;
 
-        public ProductController(IUnitOfWork InventorySalesUOW)
+        public ProductController(IUnitOfWork InventorySalesUOW, IProductDomainFactory productDomainFactory)
         {
             InventorySalesUnitOfWork = InventorySalesUOW;
+            this.productDomainFactory = productDomainFactory;
         }
 
         [HttpGet]
@@ -24,7 +27,7 @@ namespace InventorySalesSampleApi.Controllers
         {
             var mapper = InventorySalesMapping.MapConfig.CreateMapper();
             var ListOfProducts = InventorySalesUnitOfWork.ProductRepository.GetAll().ToList();
-            List<ProductDomain> productDomains = new List<ProductDomain>();
+            var productDomains = productDomainFactory.CreateListofProductDomain();
 
             mapper.Map(ListOfProducts, productDomains);
 

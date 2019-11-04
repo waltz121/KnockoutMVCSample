@@ -1,3 +1,4 @@
+using InventorySalesDomain.Factory;
 using InventorySalesSampleApi.CodeRepository;
 using InventorySalesSampleApi.Models;
 using InventorySalesSampleApi.UnitOfWork;
@@ -19,6 +20,8 @@ namespace InventorySalesSampleApi
             // it is NOT necessary to register your controllers
 
             // e.g. container.RegisterType<ITestService, TestService>();
+            container.RegisterType<IProductDomainFactory, ProductDomainFactory>();
+
             container.RegisterType<InventorySalesDBEntities, InventorySalesDBEntities>(new HierarchicalLifetimeManager());
             container.RegisterType<IRepository<Product>, ProductRepository>();
             container.RegisterType<IUnitOfWork, InventorySalesUnitOfWork>();

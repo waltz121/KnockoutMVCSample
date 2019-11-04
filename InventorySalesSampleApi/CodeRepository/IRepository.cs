@@ -10,7 +10,7 @@ namespace InventorySalesSampleApi.CodeRepository
     public interface IRepository<T>
     {
         IEnumerable<T> GetAll();
-        T Get();
+        T Get(int id);
         string Update(T UpdatedEntity);
         string Add(T Newentity);
         string Delete();

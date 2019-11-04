@@ -35,9 +35,9 @@ namespace InventorySalesSampleApi.CodeRepository
             return DBEntities.Products.Where(predicate);
         }
 
-        public Product Get()
+        public Product Get(int id)
         {
-            throw new NotImplementedException();
+            return DBEntities.Products.Where(x => x.Id == id).SingleOrDefault();
         }
 
         public IEnumerable<Product> GetAll()
