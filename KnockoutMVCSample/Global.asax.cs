@@ -1,4 +1,5 @@
-﻿using KnockoutMVCBootstrap;
+﻿using KnockoutMVCApplication.Product;
+using KnockoutMVCBootstrap;
 using KnockoutMVCSample.App_Start;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,10 @@ namespace KnockoutMVCSample
     {
         protected void Application_Start()
         {
+            ProductMapping.Execute();
+
             UnityConfigPresentation.RegisterComponents(UnityConfig.RegisterComponents());
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

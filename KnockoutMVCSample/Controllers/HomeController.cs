@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KnockoutMVCSample.Factory;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,13 @@ namespace KnockoutMVCSample.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IProductViewModelFactory productViewModelFactory;
+
+        public HomeController(IProductViewModelFactory productViewModelFactory)
+        {
+            this.productViewModelFactory = productViewModelFactory;
+        }
+
         public ActionResult Index()
         {
             return View();

@@ -31,6 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,6 +49,8 @@
   <ItemGroup>
     <Compile Include="Product\GetListProductsQuery\GetListProductsQuery.cs" />
     <Compile Include="Product\GetListProductsQuery\IGetListProductsQuery.cs" />
+    <Compile Include="Product\ProductGridModel.cs" />
+    <Compile Include="Product\ProductMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -50,6 +58,13 @@
       <Project>{DAACC078-8D10-4563-AF25-62710E14D4CC}</Project>
       <Name>InventorySalesDomain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\KnockoutMVCCommons\KnockoutMVCCommons.csproj">
+      <Project>{DA8116F5-74A5-44E1-9AD5-31A0664A5D41}</Project>
+      <Name>KnockoutMVCCommons</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

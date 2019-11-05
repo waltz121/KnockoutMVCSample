@@ -9,6 +9,6 @@ namespace KnockoutMVCApplication.Product.GetListProductsQuery
 {
     public interface IGetListProductsQuery
     {
-        List<ProductDomain> Execute();
+        List<ProductGridModel> Execute();
     }
 }
