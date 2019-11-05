@@ -24,6 +24,9 @@
             <div class="col-lg-1">
                 <button class="btn btn-primary" data-bind="click: PostIt">Post</button>
             </div>
+            <div class="col-lg-1">
+                <button class="btn btn-default" data-bind="click: Nextpage">Next</button>
+            </div>
         </div>
     </div>
 </section>
@@ -48,6 +51,12 @@
         console.log(data);
     }
 
+    function Nextpage() {
+        var url = "/Home/About"
+
+        window.location.href = url;
+    }
+
     function PostIt() {
         var form = {
             TestProductVar1: testVariable(),
@@ -65,7 +74,9 @@
             success: function (response) {
                 alert("TestProductVar1: " + response.TestProductVar1
                     + ", TestProductVar2: " + response.TestProductVar2);
-                
+
+
+                window.location.href = "/Home/Contact";
             }
         });
     }
