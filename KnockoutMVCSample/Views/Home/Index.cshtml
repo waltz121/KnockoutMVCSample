@@ -2,30 +2,80 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<section>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Test Variable1: </label>
+                    <input type="text" class="form-control" data-bind="value: testVariable" />
+                </div>                
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Test Variable2: </label>
+                    <input type="text" class="form-control" data-bind="value: testVariable2" />
+                </div>                
+            </div>
+                       
+        </div>
+        <div class="row">
+            <div class="col-lg-1">
+                <button class="btn btn-primary" data-bind="click: PostIt">Post</button>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+</section>
+
+<script>
+    var url = "/Home/InitializeData";
+    var vmData = ko.observable();
+    var testVariable = ko.observable();
+    var testVariable2 = ko.observable();
+
+    $.ajax({
+        url: url,
+        type: "GET",
+        success: function (data) {
+            vmData(data);
+            testVariable(data.TestProductVar1);
+            testVariable2(data.TestProductVar2)
+        }
+    });
+
+    function AfterInitialization(data) {
+        console.log(data);
+    }
+
+    function PostIt() {
+        var form = {
+            TestProductVar1: testVariable(),
+            TestProductVar2: testVariable2()
+        }
+
+        var url = "/Home/PostTest";
+
+        $.ajax({
+            url: url,
+            type: "POST",       
+            contentType: 'application/json; charset=utf-8',
+            dataType: "json",
+            data: JSON.stringify(form),
+            success: function (response) {
+                alert("TestProductVar1: " + response.TestProductVar1
+                    + ", TestProductVar2: " + response.TestProductVar2);
+                
+            }
+        });
+    }
+
+    var vm = {
+        test: 'asdfg',
+        vmData: vmData,
+        testVariable: testVariable,
+        testVariable2: testVariable2
+    };
+
+    ko.applyBindings(vm);
+</script>

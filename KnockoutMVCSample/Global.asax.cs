@@ -1,5 +1,6 @@
 ﻿using KnockoutMVCApplication.Product;
 using KnockoutMVCBootstrap;
+using KnockoutMVCCommons;
 using KnockoutMVCSample.App_Start;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace KnockoutMVCSample
 
             UnityConfigPresentation.RegisterComponents(UnityConfig.RegisterComponents());
 
+            ApplicationSettings.Url = "https://localhost:44376/api/";
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KnockoutMVCSample.Factory;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,8 @@ namespace KnockoutMVCSample.App_Start
     {
         public static void RegisterComponents(UnityContainer container)
         {
+            container.RegisterType<IProductViewModelFactory, ProductViewModelFactory>();
+
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

@@ -13,7 +13,7 @@ namespace InventorySalesSampleApi
     {
         protected void Application_Start()
         {
-            ApplicationSettings.Url = "https://localhost:44376/api/";
+           
             UnityConfig.RegisterComponents();
             InventorySalesMapping.Execute();
             GlobalConfiguration.Configure(WebApiConfig.Register);

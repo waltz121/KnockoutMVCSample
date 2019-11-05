@@ -1,4 +1,5 @@
 ﻿using KnockoutMVCSample.Factory;
+using KnockoutMVCSample.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,25 @@ namespace KnockoutMVCSample.Controllers
             return View();
         }
 
+        [Route("Initialize")]
+        [HttpGet]
+        public ActionResult InitializeData()
+        {
+            var vm = productViewModelFactory.CreateProductViewModel();
+
+            return Json(vm, JsonRequestBehavior.AllowGet);
+        }
+
+        [Route("PostTest")]
+        [HttpPost]
+        public JsonResult PostTest(TestPostDataFormModel form)
+        {
+            Console.WriteLine("Posted From Knockout JS: TestProductVar1 - " + form.TestProductVar1 + 
+                              "TestProductVar2 - " + form.TestProductVar2);
+
+            return Json(form, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -34,5 +54,6 @@ namespace KnockoutMVCSample.Controllers
 
             return View();
         }
+
     }
 }

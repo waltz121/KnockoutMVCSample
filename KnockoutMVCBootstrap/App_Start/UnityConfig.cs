@@ -1,3 +1,4 @@
+using KnockoutMVCApplication.Product.GetListProductsQuery;
 using KnockoutMVCCommons.HttpRequest.RequestGet;
 using KnockoutMVCCommons.HttpRequest.RequestPost;
 using Unity;
@@ -16,7 +17,7 @@ namespace KnockoutMVCBootstrap
             // e.g. container.RegisterType<ITestService, TestService>();
 
             //DependencyResolver.SetResolver(new UnityDependencyResolver(container));
-
+            container.RegisterType<IGetListProductsQuery, GetListProductsQuery>();
             container.RegisterType<IHttpRequestGet, HttpRequestGet>();
             container.RegisterType<IHttpRequestPost, HttpRequestPost>();
 

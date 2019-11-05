@@ -20,8 +20,9 @@ namespace KnockoutMVCSample.Factory
         public ProductViewModel CreateProductViewModel()
         {
             ProductViewModel viewModel = new ProductViewModel();
-            viewModel.ProductGridModels = new List<ProductGridModel>(); 
-
+            viewModel.ProductGridModels = new List<ProductGridModel>();
+            viewModel.TestProductVar1 = "Testing this";
+            viewModel.TestProductVar2 = "Testing That";
             viewModel.ProductGridModels = getListProductsQuery.Execute();
 
             return viewModel;
