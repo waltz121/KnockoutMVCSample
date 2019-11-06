@@ -47,6 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProductType\GetListOfProductTypesQuery\GetListOfProductTypesQuery.cs" />
+    <Compile Include="ProductType\GetListOfProductTypesQuery\IGetListOfProductTypesQuery.cs" />
+    <Compile Include="ProductType\ProductTypeListModel.cs" />
     <Compile Include="Product\GetListProductsQuery\GetListProductsQuery.cs" />
     <Compile Include="Product\GetListProductsQuery\IGetListProductsQuery.cs" />
     <Compile Include="Product\ProductGridModel.cs" />
@@ -66,5 +69,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

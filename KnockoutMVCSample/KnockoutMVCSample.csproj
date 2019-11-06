@@ -135,12 +135,15 @@
     <Compile Include="App_Start\UnityConfigPresentation.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Factory\IProductTypeViewModelFactory.cs" />
     <Compile Include="Factory\IProductViewModelFactory.cs" />
+    <Compile Include="Factory\ProductTypeViewModelFactory.cs" />
     <Compile Include="Factory\ProductViewModelFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\TestPostDataFormModel.cs" />
+    <Compile Include="Models\ViewModels\ProductTypeViewModel.cs" />
     <Compile Include="Models\ViewModels\ProductViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -21,9 +21,11 @@ namespace InventorySalesSampleApi
 
             // e.g. container.RegisterType<ITestService, TestService>();
             container.RegisterType<IProductDomainFactory, ProductDomainFactory>();
+            container.RegisterType<IProductTypeDomainFactory, ProductTypeDomainFactory>();
 
             container.RegisterType<InventorySalesDBEntities, InventorySalesDBEntities>(new HierarchicalLifetimeManager());
             container.RegisterType<IRepository<Product>, ProductRepository>();
+            container.RegisterType<IRepository<Product_Types>, ProductTypeRepository>();
             container.RegisterType<IUnitOfWork, InventorySalesUnitOfWork>();
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }
