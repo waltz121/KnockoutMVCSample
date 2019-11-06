@@ -23,7 +23,8 @@ namespace KnockoutMVCSample
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/ThirdPartyScripts").Include(
-                      "~/Scripts/knockout-3.5.0.js"));
+                      "~/Scripts/knockout-3.5.0.js",
+                      "~/Scripts/Knockout-SimpleGrid.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

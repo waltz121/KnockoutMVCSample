@@ -13,6 +13,7 @@ namespace KnockoutMVCSample.App_Start
     {
         public static void RegisterComponents(UnityContainer container)
         {
+            container.RegisterType<IProductTypeViewModelFactory, ProductTypeViewModelFactory>();
             container.RegisterType<IProductViewModelFactory, ProductViewModelFactory>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));

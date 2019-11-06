@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KnockoutMVCSample.Factory;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace KnockoutMVCSample.Controllers
 {
     public class ProductController : Controller
     {
+        
         // GET: Product
         public ActionResult Index()
         {
