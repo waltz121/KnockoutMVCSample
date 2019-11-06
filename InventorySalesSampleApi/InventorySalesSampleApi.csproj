@@ -121,7 +121,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="CodeRepository\IRepository.cs" />
     <Compile Include="CodeRepository\ProductRepository.cs" />
+    <Compile Include="CodeRepository\ProductTypeRepository.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProductTypeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

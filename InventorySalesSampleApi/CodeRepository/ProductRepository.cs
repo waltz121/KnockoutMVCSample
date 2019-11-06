@@ -12,7 +12,7 @@ namespace InventorySalesSampleApi.CodeRepository
     public class ProductRepository : IRepository<Product>
     {
 
-        InventorySalesDBEntities DBEntities;
+        private readonly InventorySalesDBEntities DBEntities;
      
         public ProductRepository(InventorySalesDBEntities DBEntities)
         {

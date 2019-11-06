@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace InventorySalesDomain.Factory
 {
-    public interface IProductDomainFactory
+    public interface IProductTypeDomainFactory
     {
-        ProductDomain CreateProductDomain();
-        List<ProductDomain> CreateListofProductDomain();
-
+        ProductTypesDomain CreateProductTypesDomain();
+        List<ProductTypesDomain> CreateListofProductTypesDomain();
     }
 }

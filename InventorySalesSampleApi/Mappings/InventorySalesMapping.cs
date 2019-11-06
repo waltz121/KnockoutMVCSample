@@ -15,6 +15,9 @@ namespace InventorySalesSampleApi.Mappings
                 {
                     cfg.CreateMap<Product, ProductDomain>();
                     cfg.CreateMap<ProductDomain, Product>();
+
+                    cfg.CreateMap<ProductTypesDomain, Product_Types>();
+                    cfg.CreateMap<Product_Types, ProductTypesDomain>();
                 }
                 );
         }

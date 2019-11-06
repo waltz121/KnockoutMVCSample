@@ -20,6 +20,11 @@ namespace InventorySalesSampleApi.UnitOfWork
             get;
         }
 
+        public IRepository<Product_Types> ProductTypeRepository
+        {
+            get;
+        }
+
         public string Commit()
         {
             try

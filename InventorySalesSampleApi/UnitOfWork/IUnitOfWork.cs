@@ -11,6 +11,8 @@ namespace InventorySalesSampleApi.UnitOfWork
     public interface IUnitOfWork
     {
         IRepository<Product> ProductRepository { get; }
+
+        IRepository<Product_Types> ProductTypeRepository { get; }
         string Commit();
     }
 }
