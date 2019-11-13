@@ -21,7 +21,7 @@ namespace KnockoutMVCSample.Controllers
             return View();
         }
 
-        [Route("Initialize")]
+        [Route("InitializeData")]
         [HttpGet]
         public ActionResult InitializeData()
         {

@@ -17,9 +17,10 @@ namespace InventorySalesSampleApi.Controllers
         private readonly IUnitOfWork InventorySalesUOW;
         private readonly IProductTypeDomainFactory productTypeDomainFactory;
 
-        public ProductTypeController(IUnitOfWork InventorySalesUOW)
+        public ProductTypeController(IUnitOfWork InventorySalesUOW, IProductTypeDomainFactory productTypeDomainFactory)
         {
             this.InventorySalesUOW = InventorySalesUOW;
+            this.productTypeDomainFactory = productTypeDomainFactory;
         }
 
         [HttpGet]
