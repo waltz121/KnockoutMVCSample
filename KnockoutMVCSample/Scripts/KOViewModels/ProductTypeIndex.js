@@ -10,7 +10,7 @@ $.ajax({
 });
 
 function AddProductType() {
-    console.log("It Works!!");
+    $("#exampleModal").modal('show');
 }
 
 var PagedGridModel = function (items) {

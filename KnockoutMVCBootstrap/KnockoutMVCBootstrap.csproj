@@ -94,6 +94,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\InventorySalesDomain\InventorySalesDomain.csproj">
+      <Project>{DAACC078-8D10-4563-AF25-62710E14D4CC}</Project>
+      <Name>InventorySalesDomain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\InventorySalesSampleApi\InventorySalesSampleApi.csproj">
       <Project>{E1FA3D57-13DD-41E7-BC90-EB23F9BF0548}</Project>
       <Name>InventorySalesSampleApi</Name>

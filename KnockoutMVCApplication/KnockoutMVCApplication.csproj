@@ -47,6 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProductType\AddProductTypeCommand\AddProductTypeCommand.cs" />
+    <Compile Include="ProductType\AddProductTypeCommand\IAddProductTypeCommand.cs" />
+    <Compile Include="ProductType\AddProductTypeCommand\Model\AddProductTypeModel.cs" />
     <Compile Include="ProductType\GetListOfProductTypesQuery\GetListOfProductTypesQuery.cs" />
     <Compile Include="ProductType\GetListOfProductTypesQuery\IGetListOfProductTypesQuery.cs" />
     <Compile Include="ProductType\ProductTypeListModel.cs" />

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using InventorySalesDomain;
 using KnockoutMVCApplication.ProductType;
+using KnockoutMVCApplication.ProductType.AddProductTypeCommand.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,9 @@ namespace KnockoutMVCApplication.Product
 
                     cfg.CreateMap<ProductTypesDomain, ProductTypeListModel>();
                     cfg.CreateMap<ProductTypeListModel, ProductTypesDomain>();
+
+                    cfg.CreateMap<ProductTypesDomain, AddProductTypeModel>();
+                    cfg.CreateMap<AddProductTypeModel, ProductTypesDomain>();
                 }
                 );
         }
