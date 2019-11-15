@@ -5,9 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+
     @Scripts.Render("~/bundles/EssentialScripts")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/css")
+
+
     <script>var version = "@Html.AssemblyRevisionNumber()";</script>
 </head>
 <body>
@@ -20,7 +24,6 @@
                     <div class="navbar-nav">
                         @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-item nav-link" })
                         @Html.ActionLink("Product Type", "Index", "ProductType", new { area = "" }, new { @class = "nav-item nav-link" })
-
                     </div>
                 </div>
 
