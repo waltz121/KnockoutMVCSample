@@ -25,6 +25,12 @@ namespace KoRequireMVCSample
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/EssentialScripts").Include(
+                "~/Scripts/jquery-{version}.js",
+                "~/Scripts/lib/knockout-3.5.1.js",
+                "~/Scripts/lib/Knockout-SimpleGrid.js"
+                ));
         }
     }
 }

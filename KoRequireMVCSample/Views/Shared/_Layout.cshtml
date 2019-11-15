@@ -7,6 +7,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/EssentialScripts")
     <script>var version = "@Html.AssemblyRevisionNumber()";</script>
 </head>
 <body>
@@ -23,8 +24,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Product Type", "Index", "ProductType")</li>
                 </ul>
             </div>
         </div>
