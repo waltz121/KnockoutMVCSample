@@ -1,9 +1,9 @@
 ﻿using KnockoutMVCApplication.Product;
 using KnockoutMVCApplication.Product.GetListProductsQuery;
-using KnockoutMVCSample.Models.ViewModels;
+using KoRequireMVCSample.Models.ViewModels;
 using System.Collections.Generic;
 
-namespace KnockoutMVCSample.Factory
+namespace KoRequireMVCSample.Factory
 {
     public class ProductViewModelFactory : IProductViewModelFactory
     {
@@ -13,7 +13,6 @@ namespace KnockoutMVCSample.Factory
         {
             this.getListProductsQuery = getListProductsQuery;
         }
-
         public ProductViewModel CreateProductViewModel()
         {
             ProductViewModel viewModel = new ProductViewModel();

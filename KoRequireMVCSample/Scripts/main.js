@@ -5,7 +5,8 @@
         jquery: "../lib/jquery-3.4.1",
         bootstrap: "../lib/bootstrap",
         moment: "../lib/moment",
-        domReady: "../lib/domReady"
+        domReady: "../lib/domReady",
+        ko: "../lib/knockout-3.5.1"
     },
     shim: {
 
