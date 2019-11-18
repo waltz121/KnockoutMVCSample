@@ -4,7 +4,7 @@
         function InitializeProductTypeData(vm) {
             var url = "/ProductType/InitializeData";
 
-            $.ajax({
+            return $.ajax({
                 url: url,
                 type: "GET",
                 success: function (data) {
@@ -16,7 +16,7 @@
         function AddProductType(productType) {
             var url = "/ProductType/AddProductType";
 
-            $.ajax({
+            return $.ajax({
                 url: url,
                 type: "POST",
                 contentType: 'application/json; charset=utf-8',
@@ -28,9 +28,23 @@
             });
         }
 
+        function DeleteProductType(productCode) {
+            var url = "/ProductType/DeleteProductType"
+            url = url + "?id=" + productCode
+
+            return $.ajax({
+                url: url,
+                type: "GET",
+                success: function (response) {
+                    console.log("Deleted Successfully!");
+                }
+            });
+        }
+
         var vm = {
             InitializeProductTypeData: InitializeProductTypeData,
-            AddProductType: AddProductType
+            AddProductType: AddProductType,
+            DeleteProductType: DeleteProductType
         };
 
         return vm;

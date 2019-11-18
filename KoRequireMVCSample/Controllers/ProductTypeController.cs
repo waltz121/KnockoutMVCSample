@@ -43,7 +43,7 @@ namespace KoRequireMVCSample.Controllers
         }
 
         [Route("DeleteProductType")]
-        [HttpPost]
+        [HttpGet]
         public ActionResult DeleteProductType(int id)
         {
             var vm = "";

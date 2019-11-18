@@ -19,15 +19,19 @@
             });
 
             ProductTypeDataServices.AddProductType(passedData).then(function () {
-                $("#AddProductTypeModal").modal("hide");
+                window.location.reload();
             });
         };
 
-        function DeleteProductType() {
-            console.log("It Works!");
+        function DeleteProductType(item) {
+            console.log(item);
+            ProductTypeDataServices.DeleteProductType(item.Product_Type_Code).then(function () {
+                window.location.reload();
+            });
         }
 
-        function EditProductType() {
+        function EditProductType(item) {
+            console.log(item.Product_Type_Code);
             console.log("It Works!");
         }
 
