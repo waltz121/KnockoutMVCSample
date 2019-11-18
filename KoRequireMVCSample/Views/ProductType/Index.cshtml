@@ -8,42 +8,67 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th scope="col">Edit</th>
                     <th scope="col">Product Type Code</th>
                     <th scope="col">Product Type Description</th>
+                    <th scope="col"> Delete </th>
                 </tr>
             </thead>
             <tbody data-bind="foreach: ProductTypeLists">
                 <tr>
+                    <td scope="row"><button class="btn btn-outline-info" data-bind="click: $root.EditProductType">Edit</button></td>
                     <td scope="row" data-bind="text: Product_Type_Code"></td>
                     <td scope="row" data-bind="text: Product_Type_Description"></td>
+                    <td scope="row"><button class="btn btn-outline-danger" data-bind="click: $root.DeleteProductType">Delete</button></td>
                 </tr>
             </tbody>
         </table>
     </div>
     <div class="row">
         <div class="col-md-1">
-            <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add</button>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#AddProductTypeModal">Add</button>
         </div>
     </div>
 </div>
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="AddProductTypeModal" tabindex="-1" role="dialog" aria-labelledby="AddProductTypeModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="AddProductTypeModalLabel">Add Product Type</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                ...
+                <div class="container-fluid">
+                    <div class="row">
+                        <form>
+                            <div class="form-group">
+                                <label for="ProductTypeCode">Product Type Code: </label>
+                                <input id="ProductTypeCode" type="text" class="form-control" disabled value="0" />
+                            </div>
+                            <div class="form-group">
+                                <label for="ParentProductTypeCode">Parent Product Type Code: </label>
+                                <select class="form-control" id="ParentProductTypeCode" data-bind="options: ProductTypeLists, 
+                                                                                                   optionsText: 'Product_Type_Description', 
+                                                                                                   optionsValue: 'Product_Type_Code', 
+                                                                                                   value: SelectedProductTypeForAdd,
+                                                                                                   optionsCaption: '-- Select Product Type Code --'"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="ProductTypeDescription"> Description:  </label>
+                                <input id="ProductTypeDescription" type="text" class="form-control" data-bind="value: ProductTypeDescriptionForAdd" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" data-bind="click: AddProductType">Save changes</button>
             </div>
         </div>
     </div>

@@ -45,10 +45,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationSettings.cs" />
+    <Compile Include="HttpRequest\RequestDelete\HttpRequestDelete.cs" />
+    <Compile Include="HttpRequest\RequestDelete\IHttpRequestDelete.cs" />
     <Compile Include="HttpRequest\RequestGet\HttpRequestGet.cs" />
     <Compile Include="HttpRequest\RequestGet\IHttpRequestGet.cs" />
     <Compile Include="HttpRequest\RequestPost\HttpRequestPost.cs" />
     <Compile Include="HttpRequest\RequestPost\IHttpRequestPost.cs" />
+    <Compile Include="HttpRequest\RequestPut\HttpRequestPut.cs" />
+    <Compile Include="HttpRequest\RequestPut\IHttpRequestPut.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

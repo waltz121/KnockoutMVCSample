@@ -25,7 +25,7 @@ namespace InventorySalesSampleApi.CodeRepository
             return "Newly Added State";
         }
 
-        public string Delete()
+        public string Delete(int id)
         {
             throw new NotImplementedException();
         }

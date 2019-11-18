@@ -23,9 +23,11 @@ namespace InventorySalesSampleApi.CodeRepository
             return "Newly Added State";
         }
 
-        public string Delete()
+        public string Delete(int id)
         {
-            throw new NotImplementedException();
+            var ProductType = DBEntities.Product_Types.Where(x => x.Product_Type_Code == id).SingleOrDefault();
+            DBEntities.Product_Types.Remove(ProductType);
+            return "Deleted ProductType";
         }
 
         public IQueryable<Product_Types> Find(Expression<Func<Product_Types, bool>> predicate)

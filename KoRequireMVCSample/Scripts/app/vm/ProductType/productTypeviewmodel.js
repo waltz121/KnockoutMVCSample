@@ -1,19 +1,33 @@
 ﻿require(["ko", "jquery" ,"vm/DataServices/ProductTypeDataServices"],
     function (ko, $, ProductTypeDataServices) {
-        var title = ko.observable("Test!");
+        var title = ko.observable("Product Type Manager");
         var ProductTypeLists = ko.observableArray();
 
-        var ProductTypeDescription = ko.observable();
+        var SelectedProductTypeForAdd = ko.observable();
+        var ProductTypeDescriptionForAdd = ko.observable();
 
         function init() {
             ProductTypeDataServices.InitializeProductTypeData(ProductTypeLists);
         };
 
         function AddProductType() {
-            ProductTypeDataServices.AddProductType(ProductTypeDescription);
+
+            var passedData = ko.observable({
+                Product_Type_Code: 0,
+                Parent_Product_Type_Code: SelectedProductTypeForAdd(),
+                Product_Type_Description: ProductTypeDescriptionForAdd()
+            });
+
+            ProductTypeDataServices.AddProductType(passedData).then(function () {
+                $("#AddProductTypeModal").modal("hide");
+            });
         };
 
-        function showAddProductTypeModal() {
+        function DeleteProductType() {
+            console.log("It Works!");
+        }
+
+        function EditProductType() {
             console.log("It Works!");
         }
 
@@ -23,7 +37,10 @@
             title: title,
             ProductTypeLists: ProductTypeLists,
             AddProductType: AddProductType,
-            showAddProductTypeModal: showAddProductTypeModal
+            SelectedProductTypeForAdd: SelectedProductTypeForAdd,
+            ProductTypeDescriptionForAdd: ProductTypeDescriptionForAdd,
+            DeleteProductType: DeleteProductType,
+            EditProductType: EditProductType
         }
 
         ko.applyBindings(vm);

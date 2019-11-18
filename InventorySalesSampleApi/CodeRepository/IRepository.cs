@@ -13,7 +13,7 @@ namespace InventorySalesSampleApi.CodeRepository
         T Get(int id);
         string Update(T UpdatedEntity);
         string Add(T Newentity);
-        string Delete();
+        string Delete(int id);
         IQueryable<T> Find(Expression<Func<T, bool>> predicate);
     }
 }

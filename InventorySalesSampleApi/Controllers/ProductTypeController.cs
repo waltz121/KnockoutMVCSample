@@ -61,7 +61,10 @@ namespace InventorySalesSampleApi.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, "Success");
         }
 
-
-
+        [HttpDelete]
+        public string DeleteProductType(int productTypeCode)
+        {
+            return InventorySalesUOW.ProductTypeRepository.Delete(productTypeCode);
+        }
     }
 }
