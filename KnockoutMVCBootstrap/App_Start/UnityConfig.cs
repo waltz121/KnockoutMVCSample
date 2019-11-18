@@ -3,6 +3,7 @@ using KnockoutMVCApplication.Product.GetListProductsQuery;
 using KnockoutMVCApplication.ProductType.AddProductTypeCommand;
 using KnockoutMVCApplication.ProductType.DeleteProductTypeCommand;
 using KnockoutMVCApplication.ProductType.GetListOfProductTypesQuery;
+using KnockoutMVCApplication.ProductType.GetViaIdProductTypesQuery;
 using KnockoutMVCCommons.HttpRequest.RequestDelete;
 using KnockoutMVCCommons.HttpRequest.RequestGet;
 using KnockoutMVCCommons.HttpRequest.RequestPost;
@@ -30,11 +31,12 @@ namespace KnockoutMVCBootstrap
             container.RegisterType<IHttpRequestDelete, HttpRequestDelete>();
 
             container.RegisterType<IProductTypeDomainFactory, ProductTypeDomainFactory>();
-            container.RegisterType<IAddProductTypeCommand, AddProductTypeCommand>();
 
-            container.RegisterType<IGetListOfProductTypesQuery, GetListOfProductTypesQuery>();
             container.RegisterType<IGetListProductsQuery, GetListProductsQuery>();
 
+            container.RegisterType<IAddProductTypeCommand, AddProductTypeCommand>();
+            container.RegisterType<IGetListOfProductTypesQuery, GetListOfProductTypesQuery>();
+            container.RegisterType<IGetViaIdProductTypesQuery, GetViaIdProductTypesQuery>();
             container.RegisterType<IDeleteProductTypeCommand, DeleteProductTypeCommand>();
 
             return container;

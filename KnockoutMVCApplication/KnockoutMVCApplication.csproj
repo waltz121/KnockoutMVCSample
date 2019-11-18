@@ -54,6 +54,9 @@
     <Compile Include="ProductType\DeleteProductTypeCommand\IDeleteProductTypeCommand.cs" />
     <Compile Include="ProductType\GetListOfProductTypesQuery\GetListOfProductTypesQuery.cs" />
     <Compile Include="ProductType\GetListOfProductTypesQuery\IGetListOfProductTypesQuery.cs" />
+    <Compile Include="ProductType\GetViaIdProductTypesQuery\GetViaIdProductTypesQuery.cs" />
+    <Compile Include="ProductType\GetViaIdProductTypesQuery\IGetViaIdProductTypesQuery.cs" />
+    <Compile Include="ProductType\ProductTypeDetailModel.cs" />
     <Compile Include="ProductType\ProductTypeListModel.cs" />
     <Compile Include="Product\GetListProductsQuery\GetListProductsQuery.cs" />
     <Compile Include="Product\GetListProductsQuery\IGetListProductsQuery.cs" />

@@ -22,6 +22,9 @@ namespace KnockoutMVCApplication.Product
                     cfg.CreateMap<ProductDomain, ProductGridModel>();
                     cfg.CreateMap<ProductGridModel, ProductDomain>();
 
+                    cfg.CreateMap<ProductTypesDomain, ProductTypeDetailModel>();
+                    cfg.CreateMap<ProductTypeDetailModel, ProductTypesDomain>();
+
                     cfg.CreateMap<ProductTypesDomain, ProductTypeListModel>();
                     cfg.CreateMap<ProductTypeListModel, ProductTypesDomain>();
 

@@ -6,6 +6,12 @@
         var SelectedProductTypeForAdd = ko.observable();
         var ProductTypeDescriptionForAdd = ko.observable();
 
+
+        var EditProductCode = ko.observable();
+        var EditParentProductCode = ko.observable();
+        var EditProductDescription = ko.observable();
+  
+
         function init() {
             ProductTypeDataServices.InitializeProductTypeData(ProductTypeLists);
         };
@@ -32,6 +38,21 @@
 
         function EditProductType(item) {
             console.log(item.Product_Type_Code);
+
+            console.log("It Works!");
+
+            EditProductCode(item.Product_Type_Code);
+
+            if (item.Parent_Product_Type_Code == 0) {
+                EditParentProductCode(undefined);
+            } else {
+                EditParentProductCode(item.Parent_Product_Type_Code);
+            }
+      
+            EditProductDescription(item.Product_Type_Description);
+        }
+
+        function SaveEditProductType() {
             console.log("It Works!");
         }
 
@@ -44,7 +65,14 @@
             SelectedProductTypeForAdd: SelectedProductTypeForAdd,
             ProductTypeDescriptionForAdd: ProductTypeDescriptionForAdd,
             DeleteProductType: DeleteProductType,
-            EditProductType: EditProductType
+            EditProductType: EditProductType,
+
+            EditProductCode: EditProductCode,
+            EditParentProductCode: EditParentProductCode,
+            EditProductDescription: EditProductDescription,
+
+            SaveEditProductType: SaveEditProductType
+           
         }
 
         ko.applyBindings(vm);

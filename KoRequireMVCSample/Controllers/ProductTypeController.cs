@@ -1,6 +1,7 @@
 ﻿using KnockoutMVCApplication.ProductType.AddProductTypeCommand;
 using KnockoutMVCApplication.ProductType.AddProductTypeCommand.Model;
 using KnockoutMVCApplication.ProductType.DeleteProductTypeCommand;
+using KnockoutMVCApplication.ProductType.GetViaIdProductTypesQuery;
 using KoRequireMVCSample.Factory;
 using System.Web.Mvc;
 
