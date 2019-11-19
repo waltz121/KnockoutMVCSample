@@ -67,5 +67,19 @@ namespace InventorySalesSampleApi.Controllers
             InventorySalesUOW.ProductTypeRepository.Delete(productTypeCode);
             return InventorySalesUOW.Commit();
         }
+
+        [HttpPut]
+        public HttpResponseMessage EditProductType([FromBody]ProductTypesDomain productTypesDomain)
+        {
+            Product_Types product_Types = new Product_Types();
+            var mapper = InventorySalesMapping.MapConfig.CreateMapper();
+
+            mapper.Map(productTypesDomain, product_Types);
+
+            InventorySalesUOW.ProductTypeRepository.Update(product_Types);
+
+            InventorySalesUOW.Commit();
+            return Request.CreateResponse(HttpStatusCode.OK, "Success");
+        }
     }
 }

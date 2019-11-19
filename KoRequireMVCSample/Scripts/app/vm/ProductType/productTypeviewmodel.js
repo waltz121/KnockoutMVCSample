@@ -36,10 +36,7 @@
             });
         }
 
-        function EditProductType(item) {
-            console.log(item.Product_Type_Code);
-
-            console.log("It Works!");
+        function EditProductType(item) {         
 
             EditProductCode(item.Product_Type_Code);
 
@@ -53,7 +50,16 @@
         }
 
         function SaveEditProductType() {
-            console.log("It Works!");
+
+            var data = ko.observable({
+                Product_Type_Code: EditProductCode(),
+                Parent_Product_Type_Code: EditParentProductCode(),
+                Product_Type_Description: EditProductDescription()
+            });
+
+            ProductTypeDataServices.UpdateProductType(data).then(function () {
+                window.location.reload();
+            });
         }
 
         init();

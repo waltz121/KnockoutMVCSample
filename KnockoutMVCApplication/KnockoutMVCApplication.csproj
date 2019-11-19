@@ -58,6 +58,8 @@
     <Compile Include="ProductType\GetViaIdProductTypesQuery\IGetViaIdProductTypesQuery.cs" />
     <Compile Include="ProductType\ProductTypeDetailModel.cs" />
     <Compile Include="ProductType\ProductTypeListModel.cs" />
+    <Compile Include="ProductType\UpdateProductTypesCommand\IUpdateProductTypesCommand.cs" />
+    <Compile Include="ProductType\UpdateProductTypesCommand\UpdateProductTypesCommand.cs" />
     <Compile Include="Product\GetListProductsQuery\GetListProductsQuery.cs" />
     <Compile Include="Product\GetListProductsQuery\IGetListProductsQuery.cs" />
     <Compile Include="Product\ProductGridModel.cs" />
