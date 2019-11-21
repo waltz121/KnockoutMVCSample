@@ -25,6 +25,7 @@ namespace KnockoutMVCBootstrap
             // e.g. container.RegisterType<ITestService, TestService>();
 
             //DependencyResolver.SetResolver(new UnityDependencyResolver(container));
+          
 
             container.RegisterType<IHttpRequestGet, HttpRequestGet>();
             container.RegisterType<IHttpRequestPost, HttpRequestPost>();
