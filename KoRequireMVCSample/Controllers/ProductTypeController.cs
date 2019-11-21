@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace KoRequireMVCSample.Controllers
 {
+    [Authorize]
     public class ProductTypeController : Controller
     {
         private readonly IProductTypeViewModelFactory productTypeViewModelFactory;
