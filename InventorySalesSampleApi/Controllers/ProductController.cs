@@ -47,5 +47,17 @@ namespace InventorySalesSampleApi.Controllers
             InventorySalesUnitOfWork.Commit();
             return Request.CreateResponse(HttpStatusCode.OK, "Success");
         }
+
+        [HttpGet]
+        public ProductDomain GetProduct(int id)
+        {
+            Product product = InventorySalesUnitOfWork.ProductRepository.Get(id);
+            var ProductDomain = productDomainFactory.CreateProductDomain();
+            var mapper = InventorySalesMapping.MapConfig.CreateMapper();
+
+            mapper.Map(product, ProductDomain);
+
+            return ProductDomain;
+        }
     }
 }
