@@ -31,5 +31,6 @@ namespace InventorySalesSampleApi.Models
         public virtual DbSet<Products_in_Sales> Products_in_Sales { get; set; }
         public virtual DbSet<Ref_Calendar> Ref_Calendar { get; set; }
         public virtual DbSet<Sale> Sales { get; set; }
+        public virtual DbSet<Product_Image> Product_Image { get; set; }
     }
 }

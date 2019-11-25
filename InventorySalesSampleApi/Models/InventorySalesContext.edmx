@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="InventorySalesDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="InventorySalesDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Daily_Inventory_Levels">
           <Key>
             <PropertyRef Name="Id" />
@@ -13,6 +13,15 @@
           <Property Name="Levels" Type="int" Nullable="false" />
           <Property Name="Product_ID" Type="int" Nullable="false" />
           <Property Name="Day_Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product_Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Image" Type="varbinary(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="90" />
         </EntityType>
         <EntityType Name="Product_Types">
           <Key>
@@ -82,6 +91,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Product_Image_ToProduct">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="Product_Image" Type="Self.Product_Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product_Image">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Product_ToProduct_Type">
           <End Role="Product_Types" Type="Self.Product_Types" Multiplicity="1" />
           <End Role="Products" Type="Self.Products" Multiplicity="*" />
@@ -132,6 +153,7 @@
         </Association>
         <EntityContainer Name="InventorySalesDBModelStoreContainer">
           <EntitySet Name="Daily_Inventory_Levels" EntityType="Self.Daily_Inventory_Levels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Image" EntityType="Self.Product_Image" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product_Types" EntityType="Self.Product_Types" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products_in_Sales" EntityType="Self.Products_in_Sales" Schema="dbo" store:Type="Tables" />
@@ -144,6 +166,10 @@
           <AssociationSet Name="FK_Daily_Inventory_Levels_ToRef_Calendar" Association="Self.FK_Daily_Inventory_Levels_ToRef_Calendar">
             <End Role="Ref_Calendar" EntitySet="Ref_Calendar" />
             <End Role="Daily_Inventory_Levels" EntitySet="Daily_Inventory_Levels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Image_ToProduct" Association="Self.FK_Product_Image_ToProduct">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Product_Image" EntitySet="Product_Image" />
           </AssociationSet>
           <AssociationSet Name="FK_Product_ToProduct_Type" Association="Self.FK_Product_ToProduct_Type">
             <End Role="Product_Types" EntitySet="Product_Types" />
@@ -162,8 +188,7 @@
             <End Role="Products_in_Sales" EntitySet="Products_in_Sales" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="InventorySalesDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -204,6 +229,7 @@
           <NavigationProperty Name="Daily_Inventory_Levels" Relationship="Self.FK_Daily_Inventory_Levels_ToProduct" FromRole="Products" ToRole="Daily_Inventory_Levels" />
           <NavigationProperty Name="Product_Types" Relationship="Self.FK_Product_ToProduct_Type" FromRole="Products" ToRole="Product_Types" />
           <NavigationProperty Name="Products_in_Sales" Relationship="Self.FK_Products_in_Sales_ToProducts" FromRole="Products" ToRole="Products_in_Sales" />
+          <NavigationProperty Name="Product_Image" Relationship="InventorySalesDBModel.FK_Product_Image_ToProduct" FromRole="Product" ToRole="Product_Image" />
         </EntityType>
         <EntityType Name="Products_in_Sales">
           <Key>
@@ -335,7 +361,34 @@
             <End Role="Sales" EntitySet="Sales" />
             <End Role="Products_in_Sales" EntitySet="Products_in_Sales" />
           </AssociationSet>
+          <EntitySet Name="Product_Image" EntityType="InventorySalesDBModel.Product_Image" />
+          <AssociationSet Name="FK_Product_Image_ToProduct" Association="InventorySalesDBModel.FK_Product_Image_ToProduct">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Product_Image" EntitySet="Product_Image" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Product_Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="InventorySalesDBModel.FK_Product_Image_ToProduct" FromRole="Product_Image" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_Product_Image_ToProduct">
+          <End Type="InventorySalesDBModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="InventorySalesDBModel.Product_Image" Role="Product_Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product_Image">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -398,6 +451,16 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Date_of_Sale" ColumnName="Date_of_Sale" />
                 <ScalarProperty Name="Total_Amount_of_Sale" ColumnName="Total_Amount_of_Sale" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Image">
+            <EntityTypeMapping TypeName="InventorySalesDBModel.Product_Image">
+              <MappingFragment StoreEntitySet="Product_Image">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

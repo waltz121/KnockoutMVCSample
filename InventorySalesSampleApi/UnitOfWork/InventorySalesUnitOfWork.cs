@@ -10,11 +10,12 @@ namespace InventorySalesSampleApi.UnitOfWork
 
         InventorySalesDBEntities dBEntities;
         public InventorySalesUnitOfWork(IRepository<Product> productRepository, IRepository<Product_Types> productTypeRepository,
-                                        InventorySalesDBEntities dBEntities)
+                                        IRepository<Product_Image> productImageRepository, InventorySalesDBEntities dBEntities)
         {
             this.dBEntities = dBEntities;
             ProductRepository = productRepository;
             ProductTypeRepository = productTypeRepository;
+            ProductImageRepository = productImageRepository;
         }
 
         public IRepository<Product> ProductRepository 
@@ -23,6 +24,11 @@ namespace InventorySalesSampleApi.UnitOfWork
         }
 
         public IRepository<Product_Types> ProductTypeRepository
+        {
+            get;
+        }
+
+        public IRepository<Product_Image> ProductImageRepository 
         {
             get;
         }

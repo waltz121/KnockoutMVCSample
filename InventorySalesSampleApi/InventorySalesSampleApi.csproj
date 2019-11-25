@@ -120,6 +120,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="CodeRepository\IRepository.cs" />
+    <Compile Include="CodeRepository\ProductImageRepository.cs" />
     <Compile Include="CodeRepository\ProductRepository.cs" />
     <Compile Include="CodeRepository\ProductTypeRepository.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -151,6 +152,9 @@
       <DependentUpon>InventorySalesContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Products_in_Sales.cs">
+      <DependentUpon>InventorySalesContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Product_Image.cs">
       <DependentUpon>InventorySalesContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product_Types.cs">

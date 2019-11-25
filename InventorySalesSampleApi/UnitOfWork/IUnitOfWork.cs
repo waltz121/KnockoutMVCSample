@@ -13,6 +13,7 @@ namespace InventorySalesSampleApi.UnitOfWork
         IRepository<Product> ProductRepository { get; }
 
         IRepository<Product_Types> ProductTypeRepository { get; }
+        IRepository<Product_Image> ProductImageRepository { get; }
         string Commit();
     }
 }

@@ -17,6 +17,8 @@
         <AssociationConnector Association="InventorySalesDBModel.FK_Product_Types_ToProduct_Types" ManuallyRouted="false" />
         <AssociationConnector Association="InventorySalesDBModel.FK_Products_in_Sales_ToProducts" ManuallyRouted="false" />
         <AssociationConnector Association="InventorySalesDBModel.FK_Products_in_Sales_ToSales" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="InventorySalesDBModel.Product_Image" Width="1.5" PointX="5.25" PointY="6.875" />
+        <AssociationConnector Association="InventorySalesDBModel.FK_Product_Image_ToProduct" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

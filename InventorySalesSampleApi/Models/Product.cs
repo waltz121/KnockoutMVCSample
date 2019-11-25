@@ -19,6 +19,7 @@ namespace InventorySalesSampleApi.Models
         {
             this.Daily_Inventory_Levels = new HashSet<Daily_Inventory_Levels>();
             this.Products_in_Sales = new HashSet<Products_in_Sales>();
+            this.Product_Image = new HashSet<Product_Image>();
         }
     
         public int Id { get; set; }
@@ -35,5 +36,7 @@ namespace InventorySalesSampleApi.Models
         public virtual Product_Types Product_Types { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Products_in_Sales> Products_in_Sales { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Product_Image> Product_Image { get; set; }
     }
 }
