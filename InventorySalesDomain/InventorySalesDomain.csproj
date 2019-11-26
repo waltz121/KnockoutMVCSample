@@ -42,10 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Factory\IProductDomainFactory.cs" />
+    <Compile Include="Factory\IProductImageDomainFactory.cs" />
     <Compile Include="Factory\IProductTypeDomainFactory.cs" />
     <Compile Include="Factory\ProductDomainFactory.cs" />
+    <Compile Include="Factory\ProductImageDomainFactory.cs" />
     <Compile Include="Factory\ProductTypeDomainFactory.cs" />
     <Compile Include="ProductDomain.cs" />
+    <Compile Include="ProductImageDomain.cs" />
     <Compile Include="ProductTypesDomain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

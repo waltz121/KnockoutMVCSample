@@ -40,13 +40,43 @@
                 });
         }
 
+        function SavePicture() {
+
+            var dataURL = canvas.toDataURL("image/png", 1.0);
+            dataURL = dataURL.replace('data:image/png;base64,', '');
+
+            EditProductImage_ID(0);
+            EditProductImage_ProductID(EditProduct_Id());
+            EditProductImage_Image(dataURL)
+
+            EditProductImage_Image();
+            EditProductImage_Description("");
+
+           
+
+            var passeddata = {
+                id: EditProductImage_ID(),
+                ProductId: EditProductImage_ProductID(),
+                Image: EditProductImage_Image(),
+                Description: EditProductImage_Description()
+            }
+            ProductDataServices.SaveProductImage(passeddata).then(function () {
+                console.log("Product Image Successful save");
+            });
+        }
+
+        function UploadImage() {
+            console.log("It Works!");
+
+            ProductDataServices.UploadImage(canvas);
+        }
          //===============================================================
 
 
         function init() {
             ProductDataServices.InitializeProductData(ProductList);
 
-            cameraInitialize();
+           
         }
 
         function AddProduct() {
@@ -58,6 +88,7 @@
             EditProduct_UnitPrice(item.Unit_Price);
             EditProduct_ProductName(item.Product_Name);
             EditProduct_ProductDescription(item.Product_Description);
+            cameraInitialize();
         }
 
         init();
@@ -77,7 +108,9 @@
             EditProductImage_ID: EditProductImage_ID,
             EditProductImage_ProductID: EditProductImage_ProductID,
             EditProductImage_Image: EditProductImage_Image,
-            EditProductImage_Description: EditProductImage_Description
+            EditProductImage_Description: EditProductImage_Description,
+            SavePicture: SavePicture,
+            UploadImage: UploadImage
         }
 
         ko.applyBindings(vm);

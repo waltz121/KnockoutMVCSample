@@ -1,6 +1,7 @@
 using InventorySalesDomain.Factory;
 using KnockoutMVCApplication.Product.GetListProductsQuery;
 using KnockoutMVCApplication.Product.GetProductsDetailsQuery;
+using KnockoutMVCApplication.ProductImage.Command.AddProductImageCommand;
 using KnockoutMVCApplication.ProductType.AddProductTypeCommand;
 using KnockoutMVCApplication.ProductType.DeleteProductTypeCommand;
 using KnockoutMVCApplication.ProductType.GetListOfProductTypesQuery;
@@ -34,9 +35,12 @@ namespace KnockoutMVCBootstrap
             container.RegisterType<IHttpRequestDelete, HttpRequestDelete>();
 
             container.RegisterType<IProductTypeDomainFactory, ProductTypeDomainFactory>();
+            container.RegisterType<IProductImageDomainFactory, ProductImageDomainFactory>();
 
             container.RegisterType<IGetListProductsQuery, GetListProductsQuery>();
             container.RegisterType<IGetProductDetailsQuery, GetProductDetailsQuery>();
+
+            container.RegisterType<IAddProductImageCommand, AddProductImageCommand>();
 
             container.RegisterType<IAddProductTypeCommand, AddProductTypeCommand>();
             container.RegisterType<IGetListOfProductTypesQuery, GetListOfProductTypesQuery>();

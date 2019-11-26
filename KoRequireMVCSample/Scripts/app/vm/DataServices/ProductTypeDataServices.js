@@ -24,6 +24,9 @@
                 data: JSON.stringify(productType()),
                 success: function (response) {
                     console.log("Save Successful!");
+                },
+                error: function (response) {
+                    console.log("Save Failed : " + response);
                 }
             });
         }

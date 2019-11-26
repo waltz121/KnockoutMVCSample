@@ -22,6 +22,7 @@ namespace InventorySalesSampleApi
             // e.g. container.RegisterType<ITestService, TestService>();
             container.RegisterType<IProductDomainFactory, ProductDomainFactory>();
             container.RegisterType<IProductTypeDomainFactory, ProductTypeDomainFactory>();
+            container.RegisterType<IProductImageDomainFactory, ProductImageDomainFactory>();
 
          
             container.RegisterType<InventorySalesDBEntities, InventorySalesDBEntities>(new HierarchicalLifetimeManager());
