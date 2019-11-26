@@ -1,7 +1,110 @@
-﻿
-@{
-    ViewBag.Title = "Index";
+﻿@using KoRequireMVCSample.Extensions
+
+<div class="container">
+    <div class="row">
+        <h2 data-bind="text: title"></h2>
+    </div>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Unit Price</th>
+                    <th scope="col">Product Description</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: ProductList">
+                <tr>
+                    <td scope="row"><button class="btn btn-outline-info" data-bind="click: $root.EditProduct" data-toggle="modal" data-target="#EditProductModal" >Edit</button></td>
+                    <td scope="row" data-bind="text: Id"></td>
+                    <td scope="row" data-bind="text: Product_Name"></td>
+                    <td scope="row" data-bind="text: Unit_Price"></td>
+                    <td scope="row" data-bind="text: Product_Description"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#AddProductModal" data-bind="click: AddProduct">Add</button>
+    </div>
+</div>
+
+<!-- Modal -->
+
+<div class="modal fade" id="AddProductModal" tabindex="-1" role="dialog" aria-labelledby="AddProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="AddProductModalLabel">Add Product</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="EditProductModal" tabindex="-1" role="dialog" aria-labelledby="EditProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="EditProductModalLabel">Edit Product</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <form>
+                            <div class="form-group">
+                                <label for="EditProduct_Id">Id: </label>
+                                <input id="EditProduct_Id" type="text" class="form-control" data-bind="value: EditProduct_Id" disabled />
+                            </div>
+                            <div class="form-group">
+                                <label for="EditProduct_UnitPrice">Unit Price: </label>
+                                <input id="EditProduct_UnitPrice" type="text" class="form-control" data-bind="value: EditProduct_UnitPrice" />
+                            </div>
+                            <div class="form-group">
+                                <label for="EditProduct_ProductName">Product Name: </label>
+                                <input id="EditProduct_ProductName" type="text" class="form-control" data-bind="value: EditProduct_ProductName"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="EditProduct_ProductDescription">Product Description: </label>
+                                <input id="EditProduct_ProductDescription" type="text" class="form-control" data-bind="value: EditProduct_ProductDescription" />
+                            </div>
+                        </form>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="form-group">
+                            @*<button class="btn btn-outline-danger">Upload</button>*@
+                            <video id="player" width="320" height="240" autoplay></video>
+                            <button id="capture">Capture</button>
+                            <canvas id="canvas" width=320 height=240></canvas>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    @Html.InitPageMainModule("vm/Product/productviewmodel");
 }
-
-<h2>Index</h2>
-

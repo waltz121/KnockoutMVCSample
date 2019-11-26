@@ -60,10 +60,17 @@
     <Compile Include="ProductType\ProductTypeListModel.cs" />
     <Compile Include="ProductType\UpdateProductTypesCommand\IUpdateProductTypesCommand.cs" />
     <Compile Include="ProductType\UpdateProductTypesCommand\UpdateProductTypesCommand.cs" />
+    <Compile Include="Product\AddProductCommand\AddProductCommand.cs" />
+    <Compile Include="Product\AddProductCommand\IAddProductCommand.cs" />
     <Compile Include="Product\GetListProductsQuery\GetListProductsQuery.cs" />
     <Compile Include="Product\GetListProductsQuery\IGetListProductsQuery.cs" />
+    <Compile Include="Product\GetProductsDetailsQuery\GetProductDetailsQuery.cs" />
+    <Compile Include="Product\GetProductsDetailsQuery\IGetProductDetailsQuery.cs" />
+    <Compile Include="Product\ProductDetailModel.cs" />
     <Compile Include="Product\ProductGridModel.cs" />
     <Compile Include="Product\ProductMapping.cs" />
+    <Compile Include="Product\UpdateProductCommand\IUpdateProductCommand.cs" />
+    <Compile Include="Product\UpdateProductCommand\UpdateProductCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

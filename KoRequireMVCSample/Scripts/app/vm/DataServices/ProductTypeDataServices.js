@@ -1,5 +1,5 @@
-﻿define(["ko","jquery"],
-    function (ko, $) {
+﻿define(["jquery"],
+    function ($) {
 
         function InitializeProductTypeData(vm) {
             var url = "/ProductType/InitializeData";

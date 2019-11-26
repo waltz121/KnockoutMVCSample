@@ -218,9 +218,11 @@
     <Content Include="Scripts\app\currentDateTime.js" />
     <Content Include="Scripts\app\kickoff.js" />
     <Content Include="Scripts\app\main-currentDateTime.js" />
+    <Content Include="Scripts\app\vm\DataServices\ProductDataServices.js" />
     <Content Include="Scripts\app\vm\DataServices\ProductTypeDataServices.js" />
     <Content Include="Scripts\app\vm\Home\homeviewmodel.js" />
     <Content Include="Scripts\app\vm\ProductType\productTypeviewmodel.js" />
+    <Content Include="Scripts\app\vm\Product\productviewmodel.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
