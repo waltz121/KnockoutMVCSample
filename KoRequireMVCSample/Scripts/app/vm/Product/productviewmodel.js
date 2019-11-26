@@ -13,8 +13,40 @@
             EditProductImage_Image = ko.observable(),
             EditProductImage_Description = ko.observable();
 
+        //================================== Camera Specific =================
+
+        const player = document.getElementById('player');
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+        const captureButton = document.getElementById('capture');
+
+        const constraints = {
+            video: true,
+        };
+
+        function cameraInitialize() {
+            captureButton.addEventListener('click', () => {
+                context.drawImage(player, 0, 0, canvas.width, canvas.height);
+
+                // Stop all video streams.
+                player.srcObject.getVideoTracks().forEach(track => track.stop());
+            });
+
+            navigator.mediaDevices.getUserMedia(constraints)
+                .then((stream) => {
+                    // Attach the video stream to the video element and autoplay.
+                
+                    player.srcObject = stream;
+                });
+        }
+
+         //===============================================================
+
+
         function init() {
             ProductDataServices.InitializeProductData(ProductList);
+
+            cameraInitialize();
         }
 
         function AddProduct() {
@@ -29,38 +61,13 @@
         }
 
         init();
-        //================================== Camera Specific =================
-        const player = document.getElementById('player');
-        const canvas = document.getElementById('canvas');
-        const context = canvas.getContext('2d');
-        const captureButton = document.getElementById('capture');
-
-        const constraints = {
-            video: true,
-        };
-
-        
-
-        captureButton.addEventListener('click', () => {
-            context.drawImage(player, 0, 0, canvas.width, canvas.height);
-
-            // Stop all video streams.
-            player.srcObject.getVideoTracks().forEach(track => track.stop());
-        });
-
-        navigator.mediaDevices.getUserMedia(constraints)
-            .then((stream) => {
-                // Attach the video stream to the video element and autoplay.
-                player.srcObject = stream;
-            });
-
-
-         //===============================================================
+      
         var vm = {
             title: title,
             ProductList: ProductList,
             AddProduct: AddProduct,
             EditProduct: EditProduct,
+            cameraInitialize: cameraInitialize,
 
             EditProduct_Id: EditProduct_Id,
             EditProduct_UnitPrice: EditProduct_UnitPrice,

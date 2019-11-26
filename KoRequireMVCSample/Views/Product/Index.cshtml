@@ -86,13 +86,22 @@
                     </div>
                     <br />
                     <div class="row">
-                        <div class="form-group">
-                            @*<button class="btn btn-outline-danger">Upload</button>*@
-                            <video id="player" width="320" height="240" autoplay></video>
-                            <button id="capture">Capture</button>
-                            <canvas id="canvas" width=320 height=240></canvas>
+                        <form>
+                            <div class="form-group">
+                                <video id="player" width="320" height="240" autoplay loop></video>
+                            </div>
 
-                        </div>
+                            <div class="form-group">
+                                <span class="btn btn-outline-danger" id="capture">Capture</span>
+                                <span class="btn btn-outline-secondary" data-bind="click: cameraInitialize">Retake</span>
+                            </div>
+
+                            <div class="form-group">
+                                <canvas id="canvas" width=320 height=240></canvas>
+                            </div>
+
+                        </form>
+                      
                     </div>
                 </div>
             </div>
