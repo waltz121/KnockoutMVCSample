@@ -17,12 +17,15 @@ namespace KoRequireMVCSample.App_Start
         {
             container.RegisterType<IProductTypeViewModelFactory, ProductTypeViewModelFactory>();
             container.RegisterType<IProductViewModelFactory, ProductViewModelFactory>();
+            container.RegisterType<IProductImageViewModelFactory, ProductImageViewModelFactory>();
+            container.RegisterType<IEditProductImageViewModelFactory, EditProductImageViewModelFactory>();
 
             container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>();
             container.RegisterType<UserManager<ApplicationUser>>();
             container.RegisterType<DbContext, ApplicationDbContext>();
             container.RegisterType<ApplicationUserManager>();
             container.RegisterType<AccountController>(new InjectionConstructor());
+          
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

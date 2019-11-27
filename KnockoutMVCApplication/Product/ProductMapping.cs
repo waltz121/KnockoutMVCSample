@@ -1,13 +1,8 @@
 ﻿using AutoMapper;
 using InventorySalesDomain;
-using KnockoutMVCApplication.ProductImage.Command.Model;
+using KnockoutMVCApplication.ProductImage.Model;
 using KnockoutMVCApplication.ProductType;
 using KnockoutMVCApplication.ProductType.AddProductTypeCommand.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KnockoutMVCApplication.Product
 {
@@ -34,6 +29,12 @@ namespace KnockoutMVCApplication.Product
 
                     cfg.CreateMap<ProductImageDomain, AddProductImageModel>();
                     cfg.CreateMap<AddProductImageModel, ProductImageDomain>();
+
+                    cfg.CreateMap<ProductImageDomain, ProductImageListModel>();
+                    cfg.CreateMap<ProductImageListModel, ProductImageDomain>();
+
+                    cfg.CreateMap<ProductImageDomain, ProductImageDetailModel>();
+                    cfg.CreateMap<ProductImageDetailModel, ProductImageDomain>();
                 }
                 );
         }

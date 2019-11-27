@@ -49,7 +49,14 @@
   <ItemGroup>
     <Compile Include="ProductImage\Command\AddProductImageCommand\AddProductImageCommand.cs" />
     <Compile Include="ProductImage\Command\AddProductImageCommand\IAddProductImageCommand.cs" />
-    <Compile Include="ProductImage\Command\Model\AddProductImageModel.cs" />
+    <Compile Include="ProductImage\Model\AddProductImageModel.cs" />
+    <Compile Include="ProductImage\Model\ProductImageDetailModel.cs" />
+    <Compile Include="ProductImage\Model\ProductImageListModel.cs" />
+    <Compile Include="ProductImage\Query\GetAllProductImageQuery\GetAllProductImageQuery.cs" />
+    <Compile Include="ProductImage\Query\GetAllProductImageQuery\IGetAllProductImageQuery.cs" />
+    <Compile Include="ProductImage\Query\GetAllProductImagesFromProductQuery\IGetAllProductImagesFromProductQuery.cs" />
+    <Compile Include="ProductImage\Query\GetProductImageQuery\GetProductImageQuery.cs" />
+    <Compile Include="ProductImage\Query\GetProductImageQuery\IGetProductImageQuery.cs" />
     <Compile Include="ProductType\AddProductTypeCommand\AddProductTypeCommand.cs" />
     <Compile Include="ProductType\AddProductTypeCommand\IAddProductTypeCommand.cs" />
     <Compile Include="ProductType\AddProductTypeCommand\Model\AddProductTypeModel.cs" />
@@ -89,8 +96,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ProductImage\Query\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

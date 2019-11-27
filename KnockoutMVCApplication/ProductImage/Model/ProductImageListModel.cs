@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KnockoutMVCApplication.ProductImage.Command.Model
+namespace KnockoutMVCApplication.ProductImage.Model
 {
-    public class AddProductImageModel
+    public class ProductImageListModel
     {
         public int id { get; set; }
         public int ProductId { get; set; }
-        public byte[] Image { get; set; }
         public string Description { get; set; }
     }
 }

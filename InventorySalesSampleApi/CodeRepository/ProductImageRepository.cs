@@ -35,7 +35,7 @@ namespace InventorySalesSampleApi.CodeRepository
 
         public Product_Image Get(int id)
         {
-            throw new NotImplementedException();
+            return dBEntities.Product_Image.Where(x => x.Id == id).SingleOrDefault();
         }
 
         public IEnumerable<Product_Image> GetAll()

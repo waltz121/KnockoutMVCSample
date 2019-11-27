@@ -1,11 +1,8 @@
 ﻿using KnockoutMVCApplication.ProductImage.Command.AddProductImageCommand;
-using KnockoutMVCApplication.ProductImage.Command.Model;
+using KnockoutMVCApplication.ProductImage.Model;
 using KoRequireMVCSample.Factory;
 using KoRequireMVCSample.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace KoRequireMVCSample.Controllers
@@ -57,7 +54,7 @@ namespace KoRequireMVCSample.Controllers
             addProductImageModelApplication.ProductId = addProductImageModel.ProductId;
 
             addProductImageModelApplication.Image = Convert.FromBase64String(addProductImageModel.Image);
-            
+
             var vm = addProductImageCommand.ExecuteAddProductImage(addProductImageModelApplication);
 
             return Json(vm, JsonRequestBehavior.AllowGet);

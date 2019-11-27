@@ -16,7 +16,7 @@
         });
 
         function Nextpage() {
-            var url = "/Home/About"
+            var url = "/Home/About";
 
             window.location.href = url;
         };

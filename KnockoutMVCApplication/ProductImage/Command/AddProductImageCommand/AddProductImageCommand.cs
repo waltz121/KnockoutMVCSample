@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using InventorySalesDomain.Factory;
 using KnockoutMVCApplication.Product;
-using KnockoutMVCApplication.ProductImage.Command.Model;
+using KnockoutMVCApplication.ProductImage.Model;
 using KnockoutMVCCommons;
 using KnockoutMVCCommons.HttpRequest.RequestPost;
 

@@ -4,7 +4,6 @@ using InventorySalesDomain.Factory;
 using InventorySalesSampleApi.Mappings;
 using InventorySalesSampleApi.Models;
 using InventorySalesSampleApi.UnitOfWork;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -17,13 +16,35 @@ namespace InventorySalesSampleApi.Controllers
     {
         private readonly IUnitOfWork InventorySalesUnitOfWork;
         private readonly IMapper mapper;
-        private readonly IProductTypeDomainFactory productTypeDomainFactory;
-        
-        public ProductImageController(IUnitOfWork InventorySalesUnitOfWork, IProductTypeDomainFactory productTypeDomainFactory)
+        private readonly IProductImageDomainFactory productImageDomainFactory;
+
+        public ProductImageController(IUnitOfWork InventorySalesUnitOfWork, IProductImageDomainFactory productImageDomainFactory)
         {
             this.InventorySalesUnitOfWork = InventorySalesUnitOfWork;
-            this.productTypeDomainFactory = productTypeDomainFactory;
+            this.productImageDomainFactory = productImageDomainFactory;
             mapper = InventorySalesMapping.MapConfig.CreateMapper();
+        }
+
+        [HttpGet]
+        public List<ProductImageDomain> GetListProductImageDomain()
+        {
+            var ListOfProductImage = InventorySalesUnitOfWork.ProductImageRepository.GetAll().ToList();
+            var ListOfProductImageDomains = productImageDomainFactory.CreateListOfProductImageDomain();
+
+            mapper.Map(ListOfProductImage, ListOfProductImageDomains);
+
+            return ListOfProductImageDomains;
+        }
+
+        [HttpGet]
+        public ProductImageDomain GetProductImageDomain(int id)
+        {
+            var ProductImage = InventorySalesUnitOfWork.ProductImageRepository.Get(id);
+            var ProductImageDomain = productImageDomainFactory.CreateProductImageDomain();
+            
+            mapper.Map(ProductImage, ProductImageDomain);
+
+            return ProductImageDomain;
         }
 
         [HttpPost]
